@@ -1,0 +1,976 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EcoSphere — Protect Our Planet</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+    <style>
+        /* ---- Reset & Base ---- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f5fbf7;
+            color: #1e2f2b;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ---- Buttons ---- */
+        .btn-primary {
+            display: inline-block;
+            background: #2b7a4b;
+            color: #fff;
+            padding: 14px 36px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 8px 24px rgba(43, 122, 75, 0.25);
+            letter-spacing: 0.3px;
+        }
+
+        .btn-primary:hover {
+            background: #1f5f3a;
+            transform: translateY(-3px);
+            box-shadow: 0 14px 32px rgba(43, 122, 75, 0.35);
+        }
+
+        .btn-outline {
+            display: inline-block;
+            background: transparent;
+            color: #2b7a4b;
+            padding: 12px 32px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 1rem;
+            border: 2px solid #2b7a4b;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-outline:hover {
+            background: #2b7a4b;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        /* ---- Navbar ---- */
+        .navbar {
+            padding: 20px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.82);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(43, 122, 75, 0.08);
+            transition: background 0.3s;
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.7rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: #1e2f2b;
+        }
+
+        .logo span {
+            color: #2b7a4b;
+        }
+
+        .logo i {
+            color: #2b7a4b;
+            margin-right: 6px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            font-weight: 500;
+        }
+
+        .nav-links a {
+            color: #2d3f3a;
+            transition: color 0.2s;
+            font-size: 0.95rem;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #2b7a4b;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #2b7a4b;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: #2b7a4b;
+            color: #fff !important;
+            padding: 8px 22px;
+            border-radius: 60px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .nav-cta::after {
+            display: none !important;
+        }
+
+        .nav-cta:hover {
+            background: #1f5f3a;
+            transform: translateY(-2px);
+            color: #fff !important;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 1.6rem;
+            color: #1e2f2b;
+            cursor: pointer;
+        }
+
+        /* ---- Hero ---- */
+        .hero {
+            padding: 160px 0 100px;
+            background: linear-gradient(145deg, #f0f9f3 0%, #dff0e4 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(43, 122, 75, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            left: -5%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(43, 122, 75, 0.06) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-size: 3.6rem;
+            font-weight: 800;
+            line-height: 1.12;
+            letter-spacing: -1px;
+            color: #14221e;
+        }
+
+        .hero-content h1 .highlight {
+            color: #2b7a4b;
+            position: relative;
+        }
+
+        .hero-content h1 .highlight::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 6px;
+            width: 100%;
+            height: 10px;
+            background: rgba(43, 122, 75, 0.18);
+            border-radius: 8px;
+            z-index: -1;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: #3d554e;
+            margin: 24px 0 36px;
+            max-width: 480px;
+            font-weight: 400;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 48px;
+            padding-top: 32px;
+            border-top: 2px solid rgba(43, 122, 75, 0.15);
+        }
+
+        .hero-stats .stat h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #1e2f2b;
+        }
+
+        .hero-stats .stat p {
+            font-size: 0.9rem;
+            color: #4d6b62;
+            margin: 2px 0 0;
+            font-weight: 500;
+            letter-spacing: 0.2px;
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            width: 500px;
+            height: auto;
+            border-radius: 32px;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.06);
+            transition: transform 0.6s ease;
+        }
+
+        .hero-image img:hover {
+            transform: scale(1.01) rotate(-0.5deg);
+        }
+
+        /* ---- Floating leaves decoration (purely CSS) ---- */
+        .leaf {
+            position: absolute;
+            font-size: 2.2rem;
+            opacity: 0.12;
+            color: #2b7a4b;
+            pointer-events: none;
+            animation: floatLeaf 14s infinite alternate ease-in-out;
+        }
+
+        .leaf-1 {
+            top: 12%;
+            left: 6%;
+            animation-duration: 18s;
+        }
+        .leaf-2 {
+            bottom: 18%;
+            right: 4%;
+            animation-duration: 22s;
+            font-size: 3rem;
+        }
+        .leaf-3 {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 5rem;
+            opacity: 0.06;
+            animation-duration: 26s;
+        }
+
+        @keyframes floatLeaf {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            100% {
+                transform: translate(30px, -30px) rotate(20deg);
+            }
+        }
+
+        /* ---- Section Titles ---- */
+        .section-title {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+
+        .section-title h2 {
+            font-size: 2.6rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: #14221e;
+        }
+
+        .section-title h2 span {
+            color: #2b7a4b;
+        }
+
+        .section-title p {
+            color: #4d6b62;
+            max-width: 560px;
+            margin: 12px auto 0;
+            font-size: 1.05rem;
+        }
+
+        /* ---- Cards (Initiatives) ---- */
+        .initiatives {
+            padding: 80px 0 100px;
+            background: #ffffff;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+        }
+
+        .card {
+            background: #f8fcf9;
+            border-radius: 28px;
+            padding: 36px 30px 40px;
+            transition: all 0.35s ease;
+            border: 1px solid rgba(43, 122, 75, 0.06);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 24px 56px rgba(43, 122, 75, 0.10);
+            border-color: rgba(43, 122, 75, 0.12);
+            background: #ffffff;
+        }
+
+        .card .icon {
+            font-size: 2.8rem;
+            color: #2b7a4b;
+            background: rgba(43, 122, 75, 0.08);
+            width: 76px;
+            height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            transition: 0.3s;
+        }
+
+        .card:hover .icon {
+            background: #2b7a4b;
+            color: #fff;
+            transform: scale(1.05);
+        }
+
+        .card h3 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #14221e;
+        }
+
+        .card p {
+            color: #4d6b62;
+            font-size: 0.98rem;
+            line-height: 1.7;
+        }
+
+        .card .card-link {
+            display: inline-block;
+            margin-top: 20px;
+            font-weight: 600;
+            color: #2b7a4b;
+            font-size: 0.95rem;
+            transition: 0.2s;
+        }
+
+        .card .card-link i {
+            transition: 0.2s;
+            margin-left: 4px;
+        }
+
+        .card .card-link:hover i {
+            transform: translateX(6px);
+        }
+
+        /* ---- Stats / Impact ---- */
+        .impact {
+            padding: 80px 0;
+            background: linear-gradient(145deg, #eaf5ee, #dff0e4);
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            text-align: center;
+        }
+
+        .impact-item {
+            background: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(4px);
+            border-radius: 28px;
+            padding: 32px 20px;
+            transition: 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+
+        .impact-item:hover {
+            background: rgba(255, 255, 255, 0.85);
+            transform: scale(1.02);
+        }
+
+        .impact-item .number {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #2b7a4b;
+        }
+
+        .impact-item .label {
+            font-size: 1rem;
+            color: #3d554e;
+            font-weight: 500;
+            margin-top: 4px;
+        }
+
+        /* ---- CTA Section ---- */
+        .cta-section {
+            padding: 100px 0;
+            background: #1e2f2b;
+            color: #f0f9f3;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '🌱';
+            position: absolute;
+            font-size: 18rem;
+            opacity: 0.04;
+            right: -5%;
+            top: -30%;
+            transform: rotate(12deg);
+            pointer-events: none;
+        }
+
+        .cta-section h2 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 16px;
+        }
+
+        .cta-section p {
+            max-width: 540px;
+            margin: 0 auto 36px;
+            font-size: 1.1rem;
+            color: #b8d5ca;
+        }
+
+        .cta-section .btn-primary {
+            background: #fff;
+            color: #1e2f2b;
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-section .btn-primary:hover {
+            background: #e6f0ea;
+            transform: translateY(-3px);
+        }
+
+        /* ---- Footer ---- */
+        .footer {
+            background: #14221e;
+            color: #b8d5ca;
+            padding: 60px 0 30px;
+        }
+
+        .footer .container {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .footer-brand .logo {
+            color: #fff;
+            font-size: 1.6rem;
+        }
+
+        .footer-brand p {
+            margin: 16px 0 20px;
+            max-width: 300px;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 16px;
+        }
+
+        .footer-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.06);
+            color: #b8d5ca;
+            transition: all 0.3s;
+            font-size: 1.2rem;
+        }
+
+        .footer-social a:hover {
+            background: #2b7a4b;
+            color: #fff;
+            transform: translateY(-3px);
+        }
+
+        .footer h4 {
+            color: #fff;
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 18px;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #b8d5ca;
+            transition: color 0.2s;
+            font-size: 0.95rem;
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+        }
+
+        .footer-bottom {
+            grid-column: 1 / -1;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding-top: 28px;
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #7a9e92;
+        }
+
+        /* ---- Responsive ---- */
+        @media (max-width: 992px) {
+            .hero .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-content p {
+                margin: 24px auto 36px;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-stats {
+                justify-content: center;
+            }
+
+            .hero-image img {
+                max-width: 80%;
+            }
+
+            .impact-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer .container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                background: #fff;
+                position: absolute;
+                top: 76px;
+                left: 0;
+                width: 100%;
+                padding: 24px 32px;
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+                border-radius: 0 0 28px 28px;
+                gap: 16px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hero-content h1 {
+                font-size: 2.6rem;
+            }
+
+            .hero {
+                padding: 130px 0 70px;
+            }
+
+            .impact-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 16px;
+            }
+
+            .impact-item .number {
+                font-size: 2rem;
+            }
+
+            .footer .container {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .impact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="#" class="logo">
+                <i class="fas fa-leaf"></i>Eco<span>Sphere</span>
+            </a>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#">Home</a></li>
+                <li><a href="#initiatives">Initiatives</a></li>
+                <li><a href="#impact">Impact</a></li>
+                <li><a href="#cta" class="nav-cta">Get Involved</a></li>
+            </ul>
+
+            <div class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="home">
+        <div class="leaf leaf-1"><i class="fas fa-leaf"></i></div>
+        <div class="leaf leaf-2"><i class="fas fa-tree"></i></div>
+        <div class="leaf leaf-3"><i class="fas fa-seedling"></i></div>
+
+        <div class="container">
+            <div class="hero-content">
+                <h1>
+                    Protect <br />
+                    <span class="highlight">Our Planet</span> Today
+                </h1>
+                <p>
+                    Join thousands of changemakers working to restore ecosystems,
+                    reduce waste, and build a sustainable future for all.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#cta" class="btn-primary">Start Acting <i class="fas fa-arrow-right" style="margin-left:8px;"></i></a>
+                    <a href="#initiatives" class="btn-outline">Learn More</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <h3>12K+</h3>
+                        <p>Active Members</p>
+                    </div>
+                    <div class="stat">
+                        <h3>340+</h3>
+                        <p>Projects Completed</p>
+                    </div>
+                    <div class="stat">
+                        <h3>85K</h3>
+                        <p>Trees Planted</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-image">
+                <img
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='500' viewBox='0 0 600 500'%3E%3Crect width='600' height='500' fill='%23dff0e4'/%3E%3Ccircle cx='300' cy='200' r='100' fill='%232b7a4b' opacity='0.15'/%3E%3Ccircle cx='350' cy='160' r='60' fill='%232b7a4b' opacity='0.10'/%3E%3Cpath d='M150 320 L250 280 L350 320 L450 280 L480 330 L350 380 L250 370 L150 350 Z' fill='%232b7a4b' opacity='0.12'/%3E%3Cpath d='M180 380 L280 340 L380 380 L450 350 L420 420 L280 440 L180 410 Z' fill='%232b7a4b' opacity='0.08'/%3E%3Ctext x='200' y='300' font-family='Inter, sans-serif' font-size='40' font-weight='700' fill='%231e2f2b'%3E🌍%3C/text%3E%3Ctext x='340' y='220' font-family='Inter, sans-serif' font-size='28' font-weight='600' fill='%232b7a4b' opacity='0.5'%3E🌱%3C/text%3E%3Ctext x='120' y='160' font-family='Inter, sans-serif' font-size='32' fill='%232b7a4b' opacity='0.25'%3E🌿%3C/text%3E%3C/svg%3E"
+                alt="EcoSphere — Green planet illustration"
+                loading="lazy"
+                />
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== INITIATIVES ===== -->
+    <section class="initiatives" id="initiatives">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our <span>Initiatives</span></h2>
+                <p>From local cleanups to global reforestation — every action counts.</p>
+            </div>
+
+            <div class="card-grid">
+                <!-- Card 1 -->
+                <div class="card">
+                    <div class="icon"><i class="fas fa-tree"></i></div>
+                    <h3>Reforestation</h3>
+                    <p>Planting native trees across deforested regions to restore biodiversity and combat climate change.</p>
+                    <a href="#" class="card-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <!-- Card 2 -->
+                <div class="card">
+                    <div class="icon"><i class="fas fa-water"></i></div>
+                    <h3>Ocean Cleanup</h3>
+                    <p>Removing plastic waste from shorelines and rivers, protecting marine life and water quality.</p>
+                    <a href="#" class="card-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <!-- Card 3 -->
+                <div class="card">
+                    <div class="icon"><i class="fas fa-recycle"></i></div>
+                    <h3>Zero Waste</h3>
+                    <p>Empowering communities to reduce, reuse, and recycle through education and infrastructure.</p>
+                    <a href="#" class="card-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <!-- Card 4 -->
+                <div class="card">
+                    <div class="icon"><i class="fas fa-solar-panel"></i></div>
+                    <h3>Renewable Energy</h3>
+                    <p>Accelerating the transition to solar, wind, and clean energy solutions for a greener grid.</p>
+                    <a href="#" class="card-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <!-- Card 5 -->
+                <div class="card">
+                    <div class="icon"><i class="fas fa-seedling"></i></div>
+                    <h3>Urban Greening</h3>
+                    <p>Transforming cities with green roofs, parks, and vertical gardens to improve air quality.</p>
+                    <a href="#" class="card-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <!-- Card 6 -->
+                <div class="card">
+                    <div class="icon"><i class="fas fa-hand-holding-heart"></i></div>
+                    <h3>Education &amp; Advocacy</h3>
+                    <p>Inspiring the next generation through workshops, campaigns, and policy advocacy.</p>
+                    <a href="#" class="card-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== IMPACT ===== -->
+    <section class="impact" id="impact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our <span>Impact</span> So Far</h2>
+                <p>Real numbers, real change — driven by people like you.</p>
+            </div>
+
+            <div class="impact-grid">
+                <div class="impact-item">
+                    <div class="number">12,480+</div>
+                    <div class="label">Trees Planted</div>
+                </div>
+                <div class="impact-item">
+                    <div class="number">4.2K</div>
+                    <div class="label">Tons of Waste Removed</div>
+                </div>
+                <div class="impact-item">
+                    <div class="number">340+</div>
+                    <div class="label">Cleanup Events</div>
+                </div>
+                <div class="impact-item">
+                    <div class="number">18K</div>
+                    <div class="label">People Educated</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="cta-section" id="cta">
+        <div class="container">
+            <h2>Be the Change 🌍</h2>
+            <p>
+                Every action, no matter how small, creates ripples of hope.
+                Join us in building a healthier, greener planet.
+            </p>
+            <a href="#" class="btn-primary">Join the Movement <i class="fas fa-arrow-right" style="margin-left:8px;"></i></a>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-brand">
+                <a href="#" class="logo">
+                    <i class="fas fa-leaf"></i>Eco<span>Sphere</span>
+                </a>
+                <p>
+                    Dedicated to protecting nature, empowering communities,
+                    and inspiring a sustainable way of life for generations to come.
+                </p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div>
+                <h4>Explore</h4>
+                <ul class="footer-links">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Projects</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4>Support</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Donate</a></li>
+                    <li><a href="#">Volunteer</a></li>
+                    <li><a href="#">Partners</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4>Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Use</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                    <li><a href="#">Accessibility</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-bottom">
+                &copy; 2026 EcoSphere. Built with <i class="fas fa-heart" style="color:#2b7a4b; margin:0 4px;"></i> for our planet.
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== JavaScript ===== -->
+    <script>
+        // Hamburger toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            // toggle icon
+            const icon = hamburger.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.className = 'fas fa-times';
+            } else {
+                icon.className = 'fas fa-bars';
+            }
+        });
+
+        // Close menu on link click (mobile)
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                const icon = hamburger.querySelector('i');
+                icon.className = 'fas fa-bars';
+            });
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 40) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.94)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.82)';
+            }
+        });
+    </script>
+
+</body>
+</html>
